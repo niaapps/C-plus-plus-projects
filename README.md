@@ -14,3 +14,8 @@ git add README
 
 
 git commit -m 'first commit'
+
+git remote add origin https://github.com/pandaloves/C-plus-plus-projects.git
+
+
+git push origin master
