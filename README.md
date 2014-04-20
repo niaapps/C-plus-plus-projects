@@ -1,4 +1,4 @@
-Find-the-Sin-and-Cosine
+//C plus plus projects
 =======================
 
-Simple Program created in my C++ class at school.
+//Simple Programs created in my C++ class at school.
