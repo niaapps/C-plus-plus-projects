@@ -1,0 +1,46 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+float const PI = 3.14;
+float counter,angle; // counter, temporary place for angle to display and input variable
+cout << setw(3) << "Cosine"; // first column
+cout << setw(6) << "Sine"  ; // second column
+
+
+
+for (counter = 0; counter < 5; counter++) // for loop that outputs sin and cos of angle given.
+{
+
+cout << "(Enter an angle)"; // prompt
+cin>> angle; // takes in angle
+
+
+
+angle = angle * (PI/180); // converts angle to radian form
+
+cout << setw(3) << cos(angle) << "  ";
+cout << setw(6) << sin(angle);
+
+
+
+
+
+}
+/*
+TESTING:
+Cosine  Sine(Enter an angle)6
+0.994527  0.104476(Enter an angle)50
+0.643126  0.76576(Enter an angle)63
+0.454487  0.890753(Enter an angle)180
+-0.999999  0.00159255(Enter an angle)120
+-0.49908  0.866556
+Process returned 0 (0x0)   execution time : 23.641 s
+Press any key to continue.
+
+*/
+
+}
