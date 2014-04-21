@@ -1,0 +1,440 @@
+#include <iostream>
+
+using namespace std;
+
+//function prototypes
+int sellSoda(int x);
+int purchaseSoda(int x);
+void displayInventory(int x);
+int enterInventory (int x);
+//Indentifying global variables
+int idNum,cokeInventory,pepsiInventory,hiresInventory,canadaInventory,
+        cokeCasesSold,pespiCasesSold,canadaCasesSold,hiresCasesSold,
+        totInventory;
+
+
+
+int main()
+
+ {
+   
+
+char menuSelect;
+
+
+//loop used for menu so that after commands are entered, the menu will display
+//again
+while (menuSelect != 'q' && menuSelect != 'Q')
+{
+//input prompt
+cout<<"Enter a command: "<<endl<<" 'E' for enter inventory,"<<endl
+        <<" 'P' for purchase soda,"<<endl<<" 'S' for sell soda,"<<endl<<
+" 'D' for display inventory, "<<endl<<" and Q to quit."<<endl; 
+
+//menu input
+cin>>menuSelect;
+
+//Sets the function to perform each action
+if (menuSelect == 'e'|| menuSelect == 'E')
+{    
+    //Id number input prompt
+    cout<< "please enter the ID number for the soda that you want to enter."
+    <<endl<< "enter 1 for Coca-Cola"<<endl<< "enter 2 for Pepsi"<<endl
+    << "enter 3 for Canada Dry"<<endl<< "enter 4 for Hires"<<endl; 
+    //Id number input
+    cin>> idNum;
+    //function is called with the id number.
+    enterInventory (idNum);
+}
+else if (menuSelect == 'p' || menuSelect == 'P')
+{
+    cout<< "please enter the ID number for the soda that you want to buy."
+     <<endl<< "enter 1 for Coca-Cola"<<endl<<"enter 2 for Pepsi"
+     <<endl<< "enter 3 for Canada Dry"<<endl<< "enter 4 for Hires"<<endl; 
+    
+     cin>> idNum; 
+     
+     purchaseSoda (idNum);
+}
+else if (menuSelect == 's' || menuSelect == 'S')
+{
+    cout<< "please enter the ID number for the soda that you want to sell."
+    <<endl<< "enter 1 for Coca-Cola" <<endl<< "enter 2 for Pepsi"
+    <<endl<< "enter 3 for Canada Dry"<<endl<< "enter 4 for Hires"<<endl; 
+    
+    cin >> idNum;
+    
+    sellSoda (idNum);
+}
+else if (menuSelect == 'd'|| menuSelect == 'D')
+{    
+    cout<< "please enter the ID number for the soda that you want to display."
+    << endl << "enter 1 for Coca-Cola"<< endl <<"enter 2 for Pepsi"
+    << endl << "enter 3 for Canada Dry"<< endl << "enter 4 for Hires"<< endl;
+    
+    cin>> idNum;
+    
+    displayInventory (idNum);
+}
+else if (menuSelect != 'q' || menuSelect == 'Q')
+{
+    cout<<"Can you not read or something? You clearly did not input any"<<
+            " of the 5 letters that I said you could!"<< endl;
+}
+}
+totInventory = (cokeInventory + pepsiInventory + canadaInventory +
+            hiresInventory);
+cout<<"Final Inventory between the 4 beverages: "<< totInventory<< endl;
+cout<<"Now ending program."<< endl;
+
+return 0;
+ }
+
+//pre: The inventory is as is before the function starts
+//post: The number of cases sold is subtracted from inventory
+int sellSoda(int x)
+{
+//function specific definitions
+int cocaColaCasesSold, pepsiCasesSold, 
+        canadaCasesSold, hiresCasesSold;
+
+//If statement uses id num to start sale calculation for specific soda
+if (idNum == 1)
+{
+cout<< "How many Coca-Cola cases were sold?"<<endl;
+cin>>cocaColaCasesSold;
+cokeInventory -= cocaColaCasesSold;
+}
+
+else if (idNum==2)
+{
+cout<< "How many Pepsi cases were sold?"<<endl;    
+cin>>pepsiCasesSold;
+pepsiInventory -= pepsiCasesSold;
+}
+
+else if (idNum==3)
+{ 
+cout<< "How many Canada Dry cases were sold?"<<endl;
+cin>>canadaCasesSold;
+canadaInventory -=  canadaCasesSold;
+}  
+
+else if (idNum==4)
+{
+cout<< "How many Hires cases were sold?"<<endl;
+cin>>hiresCasesSold;
+hiresInventory -= hiresCasesSold;
+}
+//Default else statement
+else 
+{
+
+cout<< "I said put 1 2 3 or 4, do you just not listen to me when I talk?"
+        <<endl;
+
+}
+
+return 0;
+} 
+
+//pre: inventory is as is before function starts
+//post: amount of soda purchased is added to inventory
+int purchaseSoda (int x)
+
+{
+int amountOfColaCases, amountOfPepsiCases, amountOfCanadaCases, 
+        amountOfHiresCases;
+
+ if (idNum ==1)
+//Amount bought is saved in the variable and the variable is added to the total
+//inventory for that soda. 
+{
+cout  << "Enter in amount of Coca-Cola cases you want to buy."<< endl;
+cin >> amountOfColaCases;
+cokeInventory += amountOfColaCases;
+}
+else if (idNum ==2)
+
+{
+cout  << "Enter in the amount of Pepsi cases you want to buy."<< endl;
+cin    >> amountOfPepsiCases;
+pepsiInventory += amountOfPepsiCases;
+}
+else if (idNum == 3)
+{
+cout << "Enter in the amount of Canada Dry cases you want to buy."<< endl; 
+cin   >> amountOfCanadaCases;
+canadaInventory += amountOfCanadaCases;
+}
+else if (idNum == 4)
+{
+    cout << "Enter in the amount of Hires cases you want to buy."<< endl;
+cin >> amountOfHiresCases;
+hiresInventory += amountOfHiresCases;
+
+}
+else 
+    cout<<"'ey, Dummy, you put in a wrong ID number!"<<endl;
+return 0;
+}
+
+//Pre: Inventory is as is before function starts
+//Post:Inventory is as is before function starts, but now it has been displayed.
+void displayInventory(int x)
+
+{
+    //function specific variable for total inventory
+   
+    
+    //simple outputs for inventory
+    if (idNum == 1)
+    cout << "Your current amount of Coca-Cola is: "<<cokeInventory<<endl;
+    else if (idNum == 2)
+        cout << "Your current amount of Pepsi is: "<<pepsiInventory<<endl;
+    else if (idNum == 3)
+        cout << "Your current amount of Canada Dry is: "<<canadaInventory<<endl;
+    else if (idNum == 4)
+        cout << "Your current amount of Hires is: "<<hiresInventory<<endl;
+    else 
+    {
+        cout << "Your current amount of the ID'd drink is: NOTHING BECAUSE"<<
+                " THERE'S NO ID OTHER THAN 1 2 3 OR 4!!"<<endl;
+    }
+   //total inventory calculation
+    totInventory = (cokeInventory + pepsiInventory + canadaInventory +
+            hiresInventory);
+    cout<<"Your total inventory between the 4 drinks is: "<< totInventory <<endl;
+
+}
+
+//pre: There is either no current inventory or an inventory from previous inputs
+//post: Previous inventory is completely overwritten by the new one entered.
+int enterInventory (int x)
+{
+ 
+ if (idNum ==1)
+{
+cout<< "Please enter the inventory of Coca-Cola in cases: "<<endl;
+cin>>cokeInventory;
+}
+
+else if (idNum == 2)
+{
+cout<< "Please enter the inventory of Pepsi in cases: "<<endl;
+cin>>pepsiInventory;
+}
+
+else if (idNum == 3)
+{
+cout<< "Please enter the inventory of Canada Dry in cases: "<<endl;
+cin>> canadaInventory;
+}
+
+else if (idNum == 4)
+{
+cout<< "Please enter the inventory of Hires in cases: "<<endl;
+cin>> hiresInventory;
+}
+else
+    cout<<"You think you're funny? Inputting a wrong ID number!?"<<endl;
+}
+
+
+
+
+/*
+ TEST RUN;
+ Enter a command: 
+ 'E' for enter inventory,
+ 'P' for purchase soda,
+ 'S' for sell soda,
+ 'D' for display inventory, 
+ and Q to quit.
+e
+please enter the ID number for the soda that you want to enter.
+enter 1 for Coca-Cola
+enter 2 for Pepsi
+enter 3 for Canada Dry
+enter 4 for Hires
+1
+Please enter the inventory of Coca-Cola in cases: 
+1000
+Enter a command: 
+ 'E' for enter inventory,
+ 'P' for purchase soda,
+ 'S' for sell soda,
+ 'D' for display inventory, 
+ and Q to quit.
+e  
+please enter the ID number for the soda that you want to enter.
+enter 1 for Coca-Cola
+enter 2 for Pepsi
+enter 3 for Canada Dry
+enter 4 for Hires
+2
+Please enter the inventory of Pepsi in cases: 
+1000
+Enter a command: 
+ 'E' for enter inventory,
+ 'P' for purchase soda,
+ 'S' for sell soda,
+ 'D' for display inventory, 
+ and Q to quit.
+e
+please enter the ID number for the soda that you want to enter.
+enter 1 for Coca-Cola
+enter 2 for Pepsi
+enter 3 for Canada Dry
+enter 4 for Hires
+3
+Please enter the inventory of Canada Dry in cases: 
+1000
+Enter a command: 
+ 'E' for enter inventory,
+ 'P' for purchase soda,
+ 'S' for sell soda,
+ 'D' for display inventory, 
+ and Q to quit.
+e
+please enter the ID number for the soda that you want to enter.
+enter 1 for Coca-Cola
+enter 2 for Pepsi
+enter 3 for Canada Dry
+enter 4 for Hires
+4
+Please enter the inventory of Hires in cases: 
+1000
+Enter a command: 
+ 'E' for enter inventory,
+ 'P' for purchase soda,
+ 'S' for sell soda,
+ 'D' for display inventory, 
+ and Q to quit.
+s
+please enter the ID number for the soda that you want to sell.
+enter 1 for Coca-Cola
+enter 2 for Pepsi
+enter 3 for Canada Dry
+enter 4 for Hires
+1
+How many Coca-Cola cases were sold?
+200
+Enter a command: 
+ 'E' for enter inventory,
+ 'P' for purchase soda,
+ 'S' for sell soda,
+ 'D' for display inventory, 
+ and Q to quit.
+s
+please enter the ID number for the soda that you want to sell.
+enter 1 for Coca-Cola
+enter 2 for Pepsi
+enter 3 for Canada Dry
+enter 4 for Hires
+2
+How many Pepsi cases were sold?
+200
+Enter a command: 
+ 'E' for enter inventory,
+ 'P' for purchase soda,
+ 'S' for sell soda,
+ 'D' for display inventory, 
+ and Q to quit.
+s
+please enter the ID number for the soda that you want to sell.
+enter 1 for Coca-Cola
+enter 2 for Pepsi
+enter 3 for Canada Dry
+enter 4 for Hires
+3
+How many Canada Dry cases were sold?
+200
+Enter a command: 
+ 'E' for enter inventory,
+ 'P' for purchase soda,
+ 'S' for sell soda,
+ 'D' for display inventory, 
+ and Q to quit.
+s
+please enter the ID number for the soda that you want to sell.
+enter 1 for Coca-Cola
+enter 2 for Pepsi
+enter 3 for Canada Dry
+enter 4 for Hires
+4
+How many Hires cases were sold?
+200
+Enter a command: 
+ 'E' for enter inventory,
+ 'P' for purchase soda,
+ 'S' for sell soda,
+ 'D' for display inventory, 
+ and Q to quit.
+d
+please enter the ID number for the soda that you want to display.
+enter 1 for Coca-Cola
+enter 2 for Pepsi
+enter 3 for Canada Dry
+enter 4 for Hires
+1
+Your current amount of Coca-Cola is: 800
+Your total inventory between the 4 drinks is: 3200
+Enter a command: 
+ 'E' for enter inventory,
+ 'P' for purchase soda,
+ 'S' for sell soda,
+ 'D' for display inventory, 
+ and Q to quit.
+s
+please enter the ID number for the soda that you want to sell.
+enter 1 for Coca-Cola
+enter 2 for Pepsi
+enter 3 for Canada Dry
+enter 4 for Hires
+4
+How many Hires cases were sold?
+5
+Enter a command: 
+ 'E' for enter inventory,
+ 'P' for purchase soda,
+ 'S' for sell soda,
+ 'D' for display inventory, 
+ and Q to quit.
+p
+please enter the ID number for the soda that you want to buy.
+enter 1 for Coca-Cola
+enter 2 for Pepsi
+enter 3 for Canada Dry
+enter 4 for Hires
+1
+Enter in amount of Coca-Cola cases you want to buy.
+300
+Enter a command: 
+ 'E' for enter inventory,
+ 'P' for purchase soda,
+ 'S' for sell soda,
+ 'D' for display inventory, 
+ and Q to quit.
+d
+please enter the ID number for the soda that you want to display.
+enter 1 for Coca-Cola
+enter 2 for Pepsi
+enter 3 for Canada Dry
+enter 4 for Hires
+1
+Your current amount of Coca-Cola is: 1100
+Your total inventory between the 4 drinks is: 3495
+Enter a command: 
+ 'E' for enter inventory,
+ 'P' for purchase soda,
+ 'S' for sell soda,
+ 'D' for display inventory, 
+ and Q to quit.
+q
+Final Inventory between the 4 beverages: 3495
+Now ending program.
+
+RUN FINISHED; exit value 0; real time: 2m 0s; user: 0ms; system: 0ms
+  
+ */
