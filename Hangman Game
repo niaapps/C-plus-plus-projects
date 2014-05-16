@@ -1,0 +1,144 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+//These are the function prototypes
+void getWord(char word[]);
+void arrayFunction(char solution[], int store);
+int guessWord(char solution[],char word[], int store);
+
+int main()
+{
+       //variable definitions
+
+       int didJaGetIt; //test variable to see determine, do we say yay or nay.
+       int store;      // place to store the size of the character arrays.
+   cout << "Hiya Player One, think of a word."<< endl;
+   cout << "Got it yet? Now (Yes you can use your fingers) ";
+   cout << "count how many letters it has, as if you were gonna draw out " ;
+   cout << "the blank spaces on the board, but the cool thing is we do it for you! ";
+   cout << "Now enter the number please." << endl; 
+   cin >> store;
+
+
+       char solution [store]; //sets solution character array length to store.
+       char wordLocal[store];// sets wordLocal to store also.
+       // Function calls
+       getWord(wordLocal);
+       arrayFunction(solution, store);
+       didJaGetIt = guessWord(solution,wordLocal,store);
+
+       //return of guessWord determines response
+       if (didJaGetIt == 0)
+               cout <<"Congratulations, player 2! You guessed correctly!"<<endl
+               <<"The word was "<< wordLocal <<"."<<endl;
+       else
+               cout << "Looks like you lose, Player 2. the word was " << wordLocal <<
+               " Better luck next time"<<endl;
+
+
+
+       //Pleasantries exchanged when loop ends, and the game ends.
+               cout<<"Thanks for playing!"<<endl;
+
+           return 0;
+
+}
+
+ //Pre: word is defined, solution is defined, and store is defined, player two
+ //guesses
+ //Post: will return 0 if p2 guessed correctly and -1 if they lost.
+int guessWord( char solution [], char word [],int store)
+       {           //Looping variables
+                   // i is to take in guesses and make sure they don't guess more than they're allowed
+                   // h is to determine if all letters are guessed correctly
+                   //guessesMade is the number of guesses p2 made.
+            int i,h,guessesMade,guesses;
+            int yes = 0; // initializng yes
+
+           //input variable, guess that p2 will make
+           char guess;
+
+           //Prompt user to input guesses allowed
+       guessesMade = 1;//Counts how many guesses the player makes.
+               cout << "How many guesses can Player 2 make overall?" << endl;
+               cin  >> guesses;
+               // displays the solution
+               cout << solution << endl;
+               // allows program to continue running until the amount of guesses
+               //has been made
+           while (guessesMade <= guesses)
+               {
+
+
+                   cout << " Please enter a letter." << endl;
+                   cin >> guess;
+
+
+                       for (i = 0;  i < store; i++ )
+                               {
+                               // determines if guess is in any of the indexes of word
+                                   if (guess == word[i] )
+                                       {
+                                           // changes * to the correct letter
+                                           solution [i]= guess;
+                                           // shows solution, with letters in place if guessed correctly.
+                                           cout << solution << endl;
+
+                                       }
+
+                               }
+                               guessesMade++;
+
+
+               }
+       for (h =0; h < store; h++)
+       // tests to see if there are any asterisks left, meaning the p2 wins
+       // yes counts how many matches between the solution and guesses made,
+       //if not equal one letter was guessed in correctly, therefore p2 loses.
+       {
+            if (word[h] == solution[h])
+               yes = yes +1;
+
+       }
+
+       if (yes != h)
+       return -1;
+           else
+       return 0;
+
+       }
+
+
+
+//Pre: Sends in the empty word memory location and the empty guesses
+  // memory location.
+ //Post:Returns word player 1 inputs and guesses to begin the game.
+ void getWord(char word[])
+   {
+
+           //Prompt user to enter word for hangman
+           cout<< "Please enter a word for hangman: "<<endl;
+           //Take in the word
+           cin>>word;
+
+
+
+   }
+
+
+ //Pre:Sends in copy of word and memory location for solution
+ //Post:  Assigns solution its size and replaces all array spots with '*'
+ void arrayFunction(char solution[], int store)
+   {
+
+           //loop to assign all locations of the array to '*'
+           int i = 0;
+           char ch = '*';
+           while (i <= store-1)
+               {
+                   solution[i] = ch;
+                   i++;
+
+               }
+   }
