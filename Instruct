@@ -1,0 +1,43 @@
+#include <iostream>
+
+using namespace std;
+
+void instruct();
+
+
+
+
+int main() 
+{
+        instruct ();           // Tells user what program does.
+        float hoursWorked,      //input- number of hours worked
+        paidPerHour,            //input- amount paid per hour for the day
+        overTimeHours,          //input- amount of overtime hours
+        overTimeTotal,          //input- amount made for overtime hours
+        totalPaidPerHour,       //output- total money made including overtime hours
+        salary;                 //amount made per hour.
+        
+       // get inputs. for calculations hours worked, salary, overtime hours.
+        cout << "Enter the hours you have worked: " << endl;
+        cin  >> hoursWorked;
+        cout << "Enter the salary paid per hour:" << endl;
+        cin  >> salary;
+        cout << "Enter the number of overtime hours worked:"<< endl;
+        cin  >> overTimeHours;
+        
+        paidPerHour = salary * hoursWorked;
+        totalPaidPerHour = (overTimeHours * salary)+ paidPerHour;
+        cout << "You have made: " << totalPaidPerHour << " dollars" << endl;
+        
+    return 0;
+}
+
+
+
+void instruct ()
+{ 
+    cout << "This program will ask you to enter in the number of hours worked, your salary per hour, your overtime hours,"<< endl;
+    cout <<"Then it will calculate how much you have made that day including the overtime hours." << endl;
+
+
+}
