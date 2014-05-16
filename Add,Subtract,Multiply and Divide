@@ -1,0 +1,38 @@
+#include <iostream>
+
+using namespace std;
+
+int mult (int a, int b); // multiplies two numbers
+
+int add (int a, int b); // adds two numbers
+
+int sub (int a, int b); // subtracts two numbers
+
+float divide (float a, float b); // divides two numbers in float form
+
+
+
+
+int main() 
+{
+    int x;
+    int y;
+    
+ //Get inputs and use function calls
+    
+    
+    cout << "Please input two numbers to be multiplied, added, subtracted and divided:";
+    
+    cin >> x >> y;
+    
+    cout << "The product of your two numbers is " << mult (x,y) << "\n";
+    
+    cout << "The sum of the two numbers is " << add (x,y) << endl;
+    
+    cout << "The difference of the two numbers is " << sub (x,y) << endl;
+    
+    cout << "The quotient of the two numbers is " << divide (x,y) << endl;
+    
+
+    return 0;
+}
